@@ -11,7 +11,7 @@ import { CollectionServ } from '../../services/collection-serv';
 })
 //list an array of 4 or more content items
 export class CollectionList {
-  private CollectionServ = inject(CollectionServ);
+  CollectionServ = inject(CollectionServ);
 
   collectible = this.CollectionServ.CollectionList;
   //listen for the collectionEvent emitted and handle it

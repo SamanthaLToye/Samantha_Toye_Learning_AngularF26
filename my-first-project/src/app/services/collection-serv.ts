@@ -1,7 +1,12 @@
-import { Service, signal, computed, effect } from '@angular/core';
+import { Service, signal, computed, effect, inject } from '@angular/core';
 import { collection } from '../shared/collection';
+import { COLLECT_CONFIG } from '../shared/CollectConfig';
+
 @Service()
 export class CollectionServ {
+  private config = inject(COLLECT_CONFIG);
+  apiBaseUrl = this.config.apiBaseUrl;
+
   private Collection = signal<collection[]>([
     {
       id: 1,
@@ -39,7 +44,7 @@ export class CollectionServ {
   collectionMatch = computed(() => {
     const count = this.collectionCount();
     return `${count} ${count === 1 ? 'item listed' : 'items listed'}`;
-  })
+  });
   //constructor does an effect when the signal changes (effect runs when signal reads change)
   constructor() {
     effect(() => {
@@ -50,9 +55,9 @@ export class CollectionServ {
   //this is the method using update that adds a new item
   addCollection(c: collection) {
     this.Collection.update((list) => [...list, c]);
-}
-    //this part is in progress from 1. Remove an item all the way through signal
-removeCollection(id: string | number) {
-  this.Collection.update((list) => list.filter((c) => c.id !== id));
+  }
+  //this part is in progress from 1. Remove an item all the way through signal
+  removeCollection(id: string | number) {
+    this.Collection.update((list) => list.filter((c) => c.id !== id));
   }
 }
