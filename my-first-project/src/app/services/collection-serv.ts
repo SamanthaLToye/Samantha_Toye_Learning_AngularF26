@@ -1,8 +1,9 @@
-import { Service, signal, computed, effect, inject } from '@angular/core';
+import { Injectable, signal, computed, effect, inject } from '@angular/core';
 import { collection } from '../shared/collection';
 import { COLLECT_CONFIG } from '../shared/CollectConfig';
 
-@Service()
+@Injectable()
+
 export class CollectionServ {
   private config = inject(COLLECT_CONFIG);
   apiBaseUrl = this.config.apiBaseUrl;

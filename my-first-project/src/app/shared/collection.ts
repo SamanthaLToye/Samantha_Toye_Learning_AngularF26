@@ -3,7 +3,7 @@
 export interface collection {
   id: string | number; //union allows 101 or 'A101' for types to be used like this
   name: string;
-  category: 'Trading Card' | 'Figure' | 'Collectible'; //union types with |
+  category?: 'Trading Card' | 'Figure' | 'Collectible' | 'Mock Collection'; //union types with |
   value: number;
-  condition?: 'Poor' | 'Good' | 'Near Mint' | 'Mint'; //optional? property
+  condition?: 'Poor' | 'Good' | 'Near Mint' | 'Mint' | string; //optional? property
 }
