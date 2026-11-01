@@ -1,7 +1,8 @@
 <div class="collection-card" (click)="toggle()">
   <!-- Added the click toggle() to the html -->
   <h2>{{ item().name }}</h2>
-
+  <!--assignment 6 step 8 add a link that routes to the detail page -->
+<a [routerLink]="['/collection', item().id]" class="detail-list">View Details</a>
   <!-- Add in @switch case include a @default, header tag (h1, h2, h3) and an @if @else -->
   @switch (item().category) {
     @case ('Trading Card') {

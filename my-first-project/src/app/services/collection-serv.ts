@@ -61,4 +61,8 @@ export class CollectionServ {
   removeCollection(id: string | number) {
     this.Collection.update((list) => list.filter((c) => c.id !== id));
   }
+
+  getItemById(itemId: number) {
+    return undefined;
+  }
 }

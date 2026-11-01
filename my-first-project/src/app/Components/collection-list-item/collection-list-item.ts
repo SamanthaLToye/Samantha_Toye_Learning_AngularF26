@@ -1,9 +1,10 @@
 import { Component, input, output } from '@angular/core';
 import { collection } from '../../shared/collection';
 import { collectionEv } from '../../shared/collectionEv';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-collection-list-item',
   styleUrl: './collection-list-item.scss',
   templateUrl: './collection-list-item.html',
@@ -19,12 +20,12 @@ export class CollectionListItem {
   toggle(): void {
     this.expanded = !this.expanded;
   }
-//I did an method to create the remove from list
+  //I did an method to create the remove from list
   protected remove(event: PointerEvent): void {
     event.stopPropagation();
     this.itemClicked.emit({
       id: this.item().id,
-      action: 'remove'
+      action: 'remove',
     });
   }
 }

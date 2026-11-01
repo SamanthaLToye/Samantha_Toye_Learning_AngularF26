@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
 import { COLLECT_CONFIG } from './shared/CollectConfig';
 import { MockServ } from './services/mock-serv';
@@ -8,7 +8,7 @@ import { CollectionServ } from './services/collection-serv';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideRouter(routes, withComponentInputBinding()), //added the withComponent from assign 6 step 6
     //swapping from the real to the mock collection this is the mock useClass
     { provide: CollectionServ, useClass: MockServ },
     // this is the real collection below to switch back to
