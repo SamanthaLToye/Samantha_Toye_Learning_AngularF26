@@ -1,0 +1,37 @@
+<form [formGroup]="collectForm" (ngSubmit)="onsubmit()">
+  <input formControlName="name" placeholder="Name" />
+  @if (collectForm.controls.name.touched && collectForm.controls.name.invalid){
+    <p class="error">A name of 3 characters is required.</p>
+  }
+  @if (collectForm.controls.name.touched && collectForm.controls.name.hasError('minLength')){
+    <p class="error">Name is required.</p>
+  }
+
+  <select formControlName="category">
+    <option value="" disabled selected>Select Category</option>
+    <option value="tradingCard">Trading Card</option>
+    <option value="figure">Figure</option>
+    <option value="collectible">Collectible</option>
+  </select>
+  @if (collectForm.controls.category.touched && collectForm.controls.category.hasError('required')){
+    <p class="error">Category is required.</p>
+  }
+
+  <input formControlName="value" placeholder="Value" />
+@if (collectForm.controls.value.touched && collectForm.controls.value.hasError('required')){
+  <p class="error">Value is required.</p>
+}
+
+  <select formControlName="condition">
+    <option value="" disabled selected>Select Item Condition</option>
+    <option value="mint">Mint</option>
+    <option value="nearMint">Near Mint</option>
+    <option value="good">Good</option>
+    <option value="poor">Poor</option>
+  </select>
+  @if (collectForm.controls.condition.touched && collectForm.controls.condition.hasError('required')){
+    <p class="error">Condition is required.</p>
+  }
+
+  <button type="submit" [disabled]="collectForm.invalid">Add Item</button>
+</form>
