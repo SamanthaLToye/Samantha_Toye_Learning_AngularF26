@@ -2,9 +2,10 @@ import { Component, inject } from '@angular/core';
 import { CollectionListItem} from '../collection-list-item/collection-list-item';
 import { collectionEv } from '../../shared/collectionEv';
 import { CollectionServ } from '../../services/collection-serv';
+import { RouterLink } from '@angular/router'
 
 @Component({
-  imports: [CollectionListItem],
+  imports: [RouterLink, CollectionListItem],
   selector: 'app-collection-list',
   styleUrl: './collection-list.scss',
   templateUrl: './collection-list.html',

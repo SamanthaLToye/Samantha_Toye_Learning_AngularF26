@@ -49,10 +49,12 @@ export class MockServ {
       console.log('Collection is currently: ', this.collectionMatch());
     });
   }
-
-  //this is the method using update that adds a new item
-  addCollection(c: collection) {
-    this.Collection.update((list) => [...list, c]);
+  getItemById(itemId: string | number): collection | undefined {
+    return this.Collection().find((c) => c.id === itemId || Number(c.id) === Number(itemId));
+  }
+  updateCollection(updateItem: collection) {
+    this.Collection.update((list) => list.map((c) => (String(c.id) === String(updateItem.id) ? updateItem : c))
+    );
   }
   //this part is in progress from 1. Remove an item all the way through signal
   removeCollection(id: string | number) {

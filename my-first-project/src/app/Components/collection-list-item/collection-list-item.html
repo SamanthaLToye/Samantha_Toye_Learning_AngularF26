@@ -2,7 +2,9 @@
   <!-- Added the click toggle() to the html -->
   <h2>{{ item().name }}</h2>
   <!--assignment 6 step 8 add a link that routes to the detail page -->
-<a [routerLink]="['/collection', item().id]" class="detail-list">View Details</a>
+  <a [routerLink]="['/collection/edit', item().id]" class="edit-btn" (click)="$event.stopPropagation()">Edit Item</a><br>
+  <a [routerLink]="['/collection', item().id]" class="detail-list" (click)="$event.stopPropagation()">View Details</a><br>
+
   <!-- Add in @switch case include a @default, header tag (h1, h2, h3) and an @if @else -->
   @switch (item().category) {
     @case ('Trading Card') {

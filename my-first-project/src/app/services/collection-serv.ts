@@ -57,12 +57,19 @@ export class CollectionServ {
   addCollection(c: collection) {
     this.Collection.update((list) => [...list, c]);
   }
+  addItem(c: collection) {
+    this.addCollection(c);
+  }
+  updateCollection(updateItem: collection) {
+    this.Collection.update((list) => list.map((c) => (String(c.id) === String(updateItem.id) ? updateItem : c))
+    );
+  }
   //this part is in progress from 1. Remove an item all the way through signal
   removeCollection(id: string | number) {
     this.Collection.update((list) => list.filter((c) => c.id !== id));
   }
 
-  getItemById(itemId: number) {
-    return undefined;
+  getItemById(itemId: string | number): collection | undefined {
+    return this.Collection().find((c) => c.id === itemId || Number(c.id) === Number(itemId));
   }
 }

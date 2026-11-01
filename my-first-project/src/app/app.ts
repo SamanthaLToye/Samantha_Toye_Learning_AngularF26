@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { collection } from './shared/collection';
 import { CollectionList } from './Components/collection-list/collection-list';
+import { RouterOutlet} from '@angular/router';
 
 @Component({
-  imports: [CollectionList],
+  imports: [RouterOutlet, CollectionList],
   selector: 'app-root',
   standalone: true,
   styleUrl: './app.scss',

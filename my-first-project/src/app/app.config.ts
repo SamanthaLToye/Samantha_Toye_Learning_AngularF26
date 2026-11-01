@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     //swapping from the real to the mock collection this is the mock useClass
     { provide: CollectionServ, useClass: MockServ },
     // this is the real collection below to switch back to
-    // { provide: CollectionServ, useClass: CollectionServ },
+    //{ provide: CollectionServ, useClass: CollectionServ },
 
     { provide: COLLECT_CONFIG,
       useValue: {

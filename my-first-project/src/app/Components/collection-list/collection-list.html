@@ -1,4 +1,5 @@
 <div class="list-container">
+  <a routerLink="/items/new" class="add-btn">Add New Item</a><br>
   <!--Use a @for and include the track expression, and an @empty block -->
   @for (c of collectible(); track c.id){
     <!--Added the itemClicked event into card -->

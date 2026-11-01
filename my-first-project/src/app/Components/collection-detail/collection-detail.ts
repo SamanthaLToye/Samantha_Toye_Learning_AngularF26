@@ -1,8 +1,9 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { CollectionServ } from '../../services/collection-serv';
+import { RouterLink} from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-collection-detail',
   styleUrl: './collection-detail.scss',
   templateUrl: './collection-detail.html',
