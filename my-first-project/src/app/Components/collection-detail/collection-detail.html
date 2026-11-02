@@ -1,1 +1,17 @@
+<div class="detail-container">
+@if (item()){
+  <h1>{{ item()?.name }}</h1>
+  <p><strong>Category:</strong>{{ item()?.category }}</p>
+  <p><strong>Value:</strong>{{ item()?.value }}</p>
+  <p><strong>Condition:</strong>{{ item()?.condition || 'Not Specified' }}</p>
+
+  <div class="button-list">
+    <a [routerLink]="['/items/edit', item()?.id]" class="edit-btn">Edit Item</a>
+
+  </div>
+} @else {
+  <p>Item not found.</p>
+  <a routerLink="/items">Back to Collection List.</a>
+}
+</div>
 

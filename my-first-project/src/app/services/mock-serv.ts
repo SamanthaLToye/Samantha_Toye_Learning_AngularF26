@@ -9,7 +9,7 @@ export class MockServ {
       id: 1000000,
       name: 'Fake Shield',
       category: 'Mock Collection',
-      value: 120000000.00,
+      value: 120000000.0,
       condition: 'No amount of polish will make this real!',
     },
     {
@@ -31,7 +31,7 @@ export class MockServ {
       name: 'Genuine Air from 1876',
       category: 'Mock Collection',
       value: 99999999999.0,
-      condition: 'This was pretty sketchy to be real in the first place.'
+      condition: 'This was pretty sketchy to be real in the first place.',
     },
   ]);
   CollectionList = this.Collection.asReadonly();
@@ -49,12 +49,22 @@ export class MockServ {
       console.log('Collection is currently: ', this.collectionMatch());
     });
   }
-  getItemById(itemId: string | number): collection | undefined {
-    return this.Collection().find((c) => c.id === itemId || Number(c.id) === Number(itemId));
+  addCollection(c: collection) {
+    this.Collection.update((list) => [...list, c]);
+  }
+  nextId(): number {
+    return Math.max(0, ...this.Collection().map((c) => Number(c.id))) + 1;
+  }
+  getItemById(id: string | number): collection | undefined {
+    return this.Collection().find((c) => String(c.id) === String(id));
   }
   updateCollection(updateItem: collection) {
-    this.Collection.update((list) => list.map((c) => (String(c.id) === String(updateItem.id) ? updateItem : c))
+    this.Collection.update((list) =>
+      list.map((c) => (String(c.id) === String(updateItem.id) ? updateItem : c)),
     );
+  }
+  getCollection(id: number): collection | undefined {
+    return this.getItemById(id);
   }
   //this part is in progress from 1. Remove an item all the way through signal
   removeCollection(id: string | number) {

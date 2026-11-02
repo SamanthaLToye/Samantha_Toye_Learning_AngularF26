@@ -1,29 +1,33 @@
-<form [formGroup]="collectForm" (ngSubmit)="onsubmit()">
-  <h2>{{ id() ? 'Edit Item' : 'Add Item' }}</h2>
-
-  <input formControlName="name" placeholder="Name" />
+<h2>{{ isEditMode() ? 'Edit Collection' : 'Add Item' }}</h2>
+<form class="collection-form" [formGroup]="collectForm" (ngSubmit)="onSubmit()">
+  <label>
+  <input type="text" formControlName="name" />
+  </label>
   @if (collectForm.controls.name.touched && collectForm.controls.name.invalid){
-    <p class="error">A name of 3 characters is required.</p>
-  }
-  @if (collectForm.controls.name.touched && collectForm.controls.name.hasError('minlength')){
     <p class="error">Name is required.</p>
   }
-
+  @if (collectForm.controls.name.touched && collectForm.controls.name.hasError('minlength')){
+    <p class="error">Name needs to be at least 3 characters minimum.</p>
+  }
+<label>
   <select formControlName="category">
     <option value="" disabled selected>Select Category</option>
     <option value="Trading Card">Trading Card</option>
     <option value="Figure">Figure</option>
     <option value="Collectible">Collectible</option>
+    <option value="Mock Collection">Mock Collection</option>
   </select>
+</label>
   @if (collectForm.controls.category.touched && collectForm.controls.category.hasError('required')){
     <p class="error">Category is required.</p>
   }
-
+<label>
   <input formControlName="value" placeholder="Value" />
+</label>
 @if (collectForm.controls.value.touched && collectForm.controls.value.hasError('required')){
   <p class="error">Value is required.</p>
 }
-
+<label>
   <select formControlName="condition">
     <option value="" disabled selected>Select Item Condition</option>
     <option value="Mint">Mint</option>
@@ -31,10 +35,12 @@
     <option value="Good">Good</option>
     <option value="Poor">Poor</option>
   </select>
+</label>
   @if (collectForm.controls.condition.touched && collectForm.controls.condition.hasError('required')){
     <p class="error">Condition is required.</p>
   }
 
-  <button type="submit" [disabled]="collectForm.invalid">Add Item</button>
-  {{ id() ? 'Save Changes' : 'Add Item' }}
+  <button type="submit" [disabled]="collectForm.invalid">
+    {{ isEditMode() ? 'Save Changes' : 'Add Item' }}
+  </button>
 </form>
