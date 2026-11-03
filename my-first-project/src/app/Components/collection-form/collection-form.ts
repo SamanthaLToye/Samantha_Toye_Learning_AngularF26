@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CollectionServ } from '../../services/collection-serv';
 import { collection } from '../../shared/collection';
+import { crossRefMint, keywordValidator } from '../../shared/custVal';
 @Component({
   imports: [ReactiveFormsModule],
   selector: 'app-collection-form',
@@ -17,10 +18,12 @@ export class CollectionForm {
   id = input<string>();
   protected isEditMode = computed(() => this.id() !== undefined);
   protected collectForm = this.fb.nonNullable.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
+    name: ['', [Validators.required, Validators.minLength(3), keywordValidator]],
     category: ['Collectible'],
     value: [0, Validators.required],
     condition: ['Mint'],
+    },{
+    validators: [crossRefMint]
   });
   constructor() {
     effect(() => {

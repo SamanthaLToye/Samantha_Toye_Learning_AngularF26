@@ -9,6 +9,9 @@
   @if (collectForm.controls.name.touched && collectForm.controls.name.hasError('minlength')){
     <p class="error">Name needs to be at least 3 characters minimum.</p>
   }
+  @if (collectForm.controls.name.touched && collectForm.controls.name.hasError('banKeyword')){
+    <p class="error">That keyword is not allowed for item name.</p>
+  }
 <label>
   <select formControlName="category">
     <option value="" disabled selected>Select Category</option>
@@ -38,6 +41,10 @@
 </label>
   @if (collectForm.controls.condition.touched && collectForm.controls.condition.hasError('required')){
     <p class="error">Condition is required.</p>
+  }
+
+  @if (collectForm.touched && collectForm.hasError('crossRefMint')) {
+    <p class="error">Mint condition needs to have a value of $50 or more.</p>
   }
 
   <button type="submit" [disabled]="collectForm.invalid">
