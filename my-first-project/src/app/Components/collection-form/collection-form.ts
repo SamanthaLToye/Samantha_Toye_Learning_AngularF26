@@ -1,10 +1,10 @@
 import { Component, computed, inject, input, effect } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { CollectionServ } from '../../services/collection-serv';
-import { CollectionListItem } from '../collection-list-item/collection-list-item';
+import { collection } from '../../shared/collection';
 @Component({
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule],
   selector: 'app-collection-form',
   styleUrl: './collection-form.scss',
   templateUrl: './collection-form.html',
@@ -42,9 +42,9 @@ export class CollectionForm {
     const id = this.isEditMode() ? Number(this.id()) : this.collectionServ.nextId();
 
     if (this.isEditMode()) {
-     this.collectionServ.updateCollection({ id, ...formValue });
+     this.collectionServ.updateCollection({ id, ...formValue } as collection);
     } else {
-      this.collectionServ.addCollection({ id, ...formValue });
+      this.collectionServ.addCollection({ id, ...formValue } as collection);
       }
       this.collectForm.reset();
       this.router.navigate(['/items']);

@@ -1,1 +1,8 @@
+<nav>
+  <a routerLink="/items">Item List</a><br>
+  <a routerLink="/items/new">Add New Item</a><br>
+  <button (click)="lockServ.toggleLock()">
+    {{ lockServ.guardLock() ? 'Unlock Editing? (Lock is: ON)' : 'Lock Editing? (Lock is: OFF)' }}
+  </button>
+</nav>
 <router-outlet></router-outlet>

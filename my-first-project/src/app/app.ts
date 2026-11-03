@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { collection } from './shared/collection';
 import { CollectionList } from './Components/collection-list/collection-list';
-import { RouterOutlet} from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { LockServ } from './services/lock-serv';
 
 @Component({
-  imports: [RouterOutlet, CollectionList],
+  imports: [RouterOutlet, RouterLink],
   selector: 'app-root',
   standalone: true,
   styleUrl: './app.scss',
   templateUrl: './app.html',
 })
 export class AppComponent {
+  lockServ = inject(LockServ);
   //create array with 6 instances of my collection
   collection: collection[] = [
     {
