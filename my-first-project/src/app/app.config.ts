@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
 
     { provide: COLLECT_CONFIG,
       useValue: {
-        apiBaseUrl: 'https://placeholder.com/api',
+        apiBaseUrl: 'https://jsonplaceholder.typicode.com/users',
         defaultCategory: 'all',
       }
     }
