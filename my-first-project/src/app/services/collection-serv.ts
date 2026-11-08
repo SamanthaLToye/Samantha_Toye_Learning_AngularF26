@@ -1,58 +1,40 @@
 import { Injectable, signal, computed, effect, inject } from '@angular/core';
 import { collection } from '../shared/collection';
 import { COLLECT_CONFIG } from '../shared/CollectConfig';
+import { HttpClient } from '@angular/common/http';
 
-@Injectable()
-
+@Injectable({
+  providedIn: 'root'
+})
 export class CollectionServ {
   private config = inject(COLLECT_CONFIG);
+  private http = inject(HttpClient);
   apiBaseUrl = this.config.apiBaseUrl;
-
-  private Collection = signal<collection[]>([
-    {
-      id: 1,
-      name: 'Superman Comic',
-      category: 'Collectible',
-      value: 120.0,
-      condition: 'Near Mint',
-    },
-    {
-      id: 2,
-      name: 'Charizard Figure',
-      category: 'Figure',
-      value: 200,
-      condition: 'Mint',
-    },
-    {
-      id: 3,
-      name: 'Babe Ruth Baseball',
-      category: 'Collectible',
-      value: 175.0,
-      condition: 'Near Mint',
-    },
-    {
-      id: 4,
-      name: 'Cal Ripkin Signed Card',
-      category: 'Trading Card',
-      value: 310,
-    },
-  ]);
+  private url = `${this.apiBaseUrl}/users`;
+  private Collection = signal<collection[]>([]);
   CollectionList = this.Collection.asReadonly();
-  //this is the computed signal (computed reads value in read only)
+
   collectionCount = computed(() => this.CollectionList().length);
 
-  //add a second computed off the first signal used count items from collection
+
   collectionMatch = computed(() => {
     const count = this.collectionCount();
     return `${count} ${count === 1 ? 'item listed' : 'items listed'}`;
   });
   //constructor does an effect when the signal changes (effect runs when signal reads change)
   constructor() {
+    this.loadFromApi();
     effect(() => {
       console.log('Collection is currently: ', this.collectionMatch());
     });
   }
-
+  //adding in the data from the JSONPlaceholder here
+  private loadFromApi() {
+    this.http.get<collection[]>(this.url).subscribe({
+      next: (data) => this.Collection.set(data),
+      error: (err) => console.error('Error fetching collection from API', err)
+    })
+  }
   //this is the method using update that adds a new item
   addCollection(c: collection) {
     this.Collection.update((list) => [...list, c]);

@@ -10,13 +10,13 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()), //added the withComponent from assign 6 step 6
     //swapping from the real to the mock collection this is the mock useClass
-    { provide: CollectionServ, useClass: MockServ },
+   // { provide: CollectionServ, useClass: MockServ },
     // this is the real collection below to switch back to
-    //{ provide: CollectionServ, useClass: CollectionServ },
+    { provide: CollectionServ, useClass: CollectionServ },
 
     { provide: COLLECT_CONFIG,
       useValue: {
-        apiBaseUrl: 'https://jsonplaceholder.typicode.com/users',
+        apiBaseUrl: 'https://jsonplaceholder.typicode.com',
         defaultCategory: 'all',
       }
     }
