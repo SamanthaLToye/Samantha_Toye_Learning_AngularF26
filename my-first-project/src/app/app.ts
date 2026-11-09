@@ -3,6 +3,7 @@ import { collection } from './shared/collection';
 import { CollectionList } from './Components/collection-list/collection-list';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { LockServ } from './services/lock-serv';
+import { ErrorServ } from './services/error-serv';
 
 @Component({
   imports: [RouterOutlet, RouterLink],
@@ -13,6 +14,7 @@ import { LockServ } from './services/lock-serv';
 })
 export class AppComponent {
   lockServ = inject(LockServ);
+  errorServ = inject(ErrorServ);
   //create array with 6 instances of my collection
   collection: collection[] = [
     {

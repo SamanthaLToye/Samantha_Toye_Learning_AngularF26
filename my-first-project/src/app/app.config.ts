@@ -6,12 +6,13 @@ import { COLLECT_CONFIG } from './shared/CollectConfig';
 import { MockServ } from './services/mock-serv';
 import { CollectionServ } from './services/collection-serv';
 import { LoadingInter } from './services/loading-inter';
+import { ErrorInter } from './services/error-inter';
 //made changes to provide inject token from CollectConfig
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors([LoadingInter])),
+    provideHttpClient(withInterceptors([LoadingInter, ErrorInter])),
 
     //swapping from the real to the mock collection this is the mock useClass
    // { provide: CollectionServ, useClass: MockServ },

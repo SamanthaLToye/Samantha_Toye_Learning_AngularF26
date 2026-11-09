@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "create": "ng g c Components/collection-form",
-    "generate": "ng g s services/loading-inter",
+    "generate": "ng g s services/error-inter",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
