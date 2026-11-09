@@ -1,5 +1,9 @@
 <div class="list-container">
-
+@if (CollectionServ.isLoading()) {
+  <p class="loading-message">Loading Collection Data...</p>
+} @else if (CollectionServ.error()) {
+  <p class="error-message" style="color: red;">{{ CollectionServ.error() }}</p>
+} @else {
   <!--Use a @for and include the track expression, and an @empty block -->
   @for (c of collectible(); track c.id){
     <!--Added the itemClicked event into card -->
@@ -8,6 +12,7 @@
   } @empty {
     <p>No Collectibles in your collection list.</p>
   }
+}
   <br><br>
   <p class="config-info" style="margin-top: 600px;">Website: {{ CollectionServ.apiBaseUrl }}</p>
 </div>

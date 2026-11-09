@@ -13,7 +13,9 @@ export class CollectionServ {
   private url = `${this.apiBaseUrl}/users`;
   private Collection = signal<collection[]>([]);
   CollectionList = this.Collection.asReadonly();
-
+  //step 14 track the loading and error states as signals
+  isLoading = signal<boolean>(true);
+  error = signal<string | null>(null);
   collectionCount = computed(() => this.CollectionList().length);
 
 
@@ -30,10 +32,19 @@ export class CollectionServ {
   }
   //adding in the data from the JSONPlaceholder here
   private loadFromApi() {
-    this.http.get<collection[]>(this.url).subscribe({
-      next: (data) => this.Collection.set(data),
-      error: (err) => console.error('Error fetching collection from API', err)
-    })
+    this.http.get<collection[]>(this.url, {
+      params: { _limit: 5 }, //the json-server uses _Query parameters to filter example -> _limit = 5 _page = 2
+    }).subscribe({
+      next: (data) => {
+        this.Collection.set(data);
+        this.isLoading.set(false); //false turn off data
+      },
+      error: (err) => {
+        console.error('Error fetching collection from API', err);
+        this.error.set('Could not load data.'); //set the error message
+        this.isLoading.set(false); //turn off loading with error
+      }
+    });
   }
   //this is the method using update that adds a new item
   addCollection(c: collection) {
