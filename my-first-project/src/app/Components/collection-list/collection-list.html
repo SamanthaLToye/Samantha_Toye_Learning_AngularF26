@@ -1,4 +1,6 @@
 <div class="list-container">
+  <!-- built in pipe here for number on page results-->
+  <p>Items Listed: {{ CollectionServ.collectionCount() | number:'1.0-0' }}</p><br>
   <p style="font-size: 0.8rem; margin-bottom: 100px; background-color: lightgray; padding: 6px 12px; display: inline-block; border-radius: 8px">
     Note: Changes are saved on the browser only and will not change server settings.
   </p>

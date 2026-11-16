@@ -1,23 +1,23 @@
 <div class="collection-card" (click)="toggle()">
-  <!-- Added the click toggle() to the html -->
-  <h2>{{ item().name }}</h2>
+  <!-- Added the titlecase pipe here -->
+  <h2>{{ item().name | titlecase }}</h2>
   <!--assignment 6 step 8 add a link that routes to the detail page -->
   <a [routerLink]="['/items/edit', item().id]" class="edit-btn" (click)="$event.stopPropagation()">Edit</a><br>
   <a [routerLink]="['/items', item().id]" class="detail-list" (click)="$event.stopPropagation()">View Details</a><br>
 
-  <!-- Add in @switch case include a @default, header tag (h1, h2, h3) and an @if @else -->
+  <!-- Added in the slice pipe here inside my cards shortening the category names when entered -->
   @switch (item().category) {
     @case ('Trading Card') {
-      <span class="badge card-badge">Trading Card</span>
+      <span class="badge card-badge">{{ item().category | slice:0:8 }}</span>
     }
     @case ('Figure') {
-      <span class="badge figure-badge">Figure</span>
+      <span class="badge figure-badge">{{ item().category | slice:0:8 }}</span>
     }
     @case ('Collectible') {
-      <span class="badge collectible-badge">Collectible</span>
+      <span class="badge collectible-badge">{{ item().category | slice:0:8 }}</span>
     }
     @default {
-      <span class="badge default-badge">Unknown</span>
+      <span class="badge default-badge">{{ item().category | slice:0:8 }}</span>
     }
   }
 

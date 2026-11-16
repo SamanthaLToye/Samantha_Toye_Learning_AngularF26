@@ -2,9 +2,10 @@ import { Component, input, output } from '@angular/core';
 import { collection } from '../../shared/collection';
 import { collectionEv } from '../../shared/collectionEv';
 import { RouterLink } from '@angular/router';
+import { CommonModule, SlicePipe, TitleCasePipe } from '@angular/common';
 
 @Component({
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe],
   selector: 'app-collection-list-item',
   styleUrl: './collection-list-item.scss',
   templateUrl: './collection-list-item.html',

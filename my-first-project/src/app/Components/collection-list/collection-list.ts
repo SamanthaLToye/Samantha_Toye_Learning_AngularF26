@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { CollectionListItem} from '../collection-list-item/collection-list-item';
 import { collectionEv } from '../../shared/collectionEv';
 import { CollectionServ } from '../../services/collection-serv';
-import { RouterLink } from '@angular/router'
+import { RouterLink } from '@angular/router';
+import { CommonModule, DecimalPipe, } from '@angular/common';
 
 @Component({
-  imports: [RouterLink, CollectionListItem],
+  imports: [RouterLink, CollectionListItem, CommonModule, DecimalPipe],
   selector: 'app-collection-list',
   styleUrl: './collection-list.scss',
   templateUrl: './collection-list.html',
