@@ -17,3 +17,39 @@ easier to read and understand how it works.
 
 When the page is refreshed, any new items, edits, deletes, are cleared and the original API data
 reloads. This happens because the updates are stored only in the browsers memory and doesn't update the servers actual data.
+
+
+### Lazy Loading
+
+This is the before chunk file size and how large it was before making any changes to the landing page.
+
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+main-VT6Z4SEW.js    | main          | 327.49 kB |                86.43 kB
+styles-5FGPIYZR.css | styles        | 495 bytes |               495 bytes
+
+                    | Initial total | 327.98 kB |                86.93 kB
+
+***
+This is the after chunk file size for the landing page.
+
+Initial chunk files | Names             |  Raw size | Estimated transfer size
+chunk-3JV7J2F4.js   | -                 | 270.29 kB |                74.47 kB
+main-RON5LM7J.js    | main              |   9.32 kB |                 3.01 kB
+styles-5FGPIYZR.css | styles            | 495 bytes |               495 bytes
+
+                    | Initial total     | 280.11 kB |                77.98 kB
+
+Lazy chunk files    | Names             |  Raw size | Estimated transfer size
+chunk-QXHVZ2FH.js   | collection-form   |  48.28 kB |                10.70 kB
+chunk-45QK7UFY.js   | collection-detail |   1.21 kB |               626 bytes
+
+Application bundle generation complete. [2.388 seconds] - 2026-11-17T05:13:44.824Z
+
+
+
+In the first initial run the application used all the templates in one file as shown in the table. 
+What we learn about coding, is that having extra code that isn't needed to load the landing page isn't required.
+This causes excessive amounts of data to load repeatedly every time a user goes to the page. 
+
+When we change the landing to load the component routes, we use Angulars built-in system to split those routes.
+This changes the size of the file by loading only what is needed on the landing page until a route is requested. 
