@@ -51,5 +51,13 @@ In the first initial run the application used all the templates in one file as s
 What we learn about coding, is that having extra code that isn't needed to load the landing page isn't required.
 This causes excessive amounts of data to load repeatedly every time a user goes to the page. 
 
-When we change the landing to load the component routes, we use Angulars built-in system to split those routes.
+When we change the landing to load the component routes, we use Angular built-in system to split those routes.
 This changes the size of the file by loading only what is needed on the landing page until a route is requested. 
+
+### Lifecycle
+
+When you have this.id() in a constructor it triggers a runtime error NG8118 because the required signal input is not yet initialized
+or bound when creating the component class.
+
+When navigating back to the main landing page with the back button in the browser caused ngOnDestroy to run, 
+which causes the router to completely destroy the instance when you leave, rather than just hide the page. 
