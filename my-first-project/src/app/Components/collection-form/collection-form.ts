@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, effect } from '@angular/core';
+import { Component, computed, inject, input, effect, viewChild, ElementRef, afterNextRender } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CollectionServ } from '../../services/collection-serv';
@@ -17,6 +17,8 @@ export class CollectionForm {
 
   id = input<string>();
   protected isEditMode = computed(() => this.id() !== undefined);
+  //read the first input from collection form using viewChild
+  readonly firstRun = viewChild.required<ElementRef<HTMLInputElement>>('firstField');
   protected collectForm = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(3), keywordValidator]],
     category: ['Collectible'],
@@ -35,6 +37,10 @@ export class CollectionForm {
         if (collection) {
           this.collectForm.patchValue({ ...collection, condition: collection.condition });
       }
+    });
+    //By adding this in the constructor it is part of the initial page build, where if we had it in the ngOnInit it wouldn't work because the lifecycle would already be done before it's added.
+    afterNextRender(() => {
+      this.firstRun().nativeElement.focus();
     });
   }
   protected onSubmit(): void {
