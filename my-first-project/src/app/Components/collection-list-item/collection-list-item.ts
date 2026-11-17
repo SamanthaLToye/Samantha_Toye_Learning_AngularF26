@@ -3,9 +3,11 @@ import { collection } from '../../shared/collection';
 import { collectionEv } from '../../shared/collectionEv';
 import { RouterLink } from '@angular/router';
 import { CommonModule, SlicePipe, TitleCasePipe } from '@angular/common';
+import { ConditionTypePipe } from '../../pipes/condition-type-pipe';
+import { ShortenTextPipe } from '../../pipes/shorten-text-pipe';
 
 @Component({
-  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe],
+  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe, ConditionTypePipe, ShortenTextPipe],
   selector: 'app-collection-list-item',
   styleUrl: './collection-list-item.scss',
   templateUrl: './collection-list-item.html',

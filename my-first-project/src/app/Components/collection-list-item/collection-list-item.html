@@ -1,6 +1,6 @@
 <div class="collection-card" (click)="toggle()">
-  <!-- Added the titlecase pipe here -->
-  <h2>{{ item().name | titlecase }}</h2>
+  <!-- Added the titlecase pipe here and then added the shortenText to limit names -->
+  <h2>{{ item().name | shortenText:8 | titlecase }}</h2>
   <!--assignment 6 step 8 add a link that routes to the detail page -->
   <a [routerLink]="['/items/edit', item().id]" class="edit-btn" (click)="$event.stopPropagation()">Edit</a><br>
   <a [routerLink]="['/items', item().id]" class="detail-list" (click)="$event.stopPropagation()">View Details</a><br>
@@ -21,11 +21,11 @@
     }
   }
 
-  <!-- an @if reveals the details when expanded is true -->
+  <!-- Added conditionType to the conditions to uppercase pipe  -->
   @if (expanded) {
 <p><strong>Value:</strong> ${{ item().value }}</p>
   @if (item().condition){
-    <p><strong>Condition:</strong> {{ item().condition }}</p>
+    <p><strong>Condition:</strong> {{ item().condition | conditionType | uppercase }}</p>
   } @else {
     <p><strong>Condition:</strong> Not Specified</p>
   }

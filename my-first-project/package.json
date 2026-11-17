@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "create": "ng g c Components/collection-form",
+    "create": "ng g pipe pipes/conditionType",
     "generate": "ng g s services/error-inter",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
