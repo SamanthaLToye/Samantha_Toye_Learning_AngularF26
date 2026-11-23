@@ -5,9 +5,9 @@ import { RouterLink } from '@angular/router';
 import { CommonModule, SlicePipe, TitleCasePipe } from '@angular/common';
 import { ConditionTypePipe } from '../../pipes/condition-type-pipe';
 import { ShortenTextPipe } from '../../pipes/shorten-text-pipe';
-
+import { HoverStyle } from '../../directives/hover-style';
 @Component({
-  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe, ConditionTypePipe, ShortenTextPipe],
+  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe, ConditionTypePipe, ShortenTextPipe, HoverStyle],
   selector: 'app-collection-list-item',
   styleUrl: './collection-list-item.scss',
   templateUrl: './collection-list-item.html',

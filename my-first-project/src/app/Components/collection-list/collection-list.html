@@ -11,8 +11,8 @@
 } @else {
   <!--Use a @for and include the track expression, and an @empty block -->
   @for (c of collectible(); track c.id){
-    <!--Added the itemClicked event into card -->
-    <app-collection-list-item [item]="c" (itemClicked)="handleItemClick($event)">
+    <!--Added the appHoverStyle here -->
+    <app-collection-list-item [appHoverStyle]="'#5d87c1'" [item]="c" (itemClicked)="handleItemClick($event)">
     </app-collection-list-item>
   } @empty {
     <p>No Collectibles in your collection list.</p>

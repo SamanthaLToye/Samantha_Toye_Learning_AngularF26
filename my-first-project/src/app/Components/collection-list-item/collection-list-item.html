@@ -1,4 +1,4 @@
-<div class="collection-card" (click)="toggle()">
+<div class="collection-card" appHoverStyle (click)="toggle()">
   <!-- Added the titlecase pipe here and then added the shortenText to limit names -->
   <h2>{{ item().name | shortenText:8 | titlecase }}</h2>
   <!--assignment 6 step 8 add a link that routes to the detail page -->
