@@ -6,8 +6,9 @@ import { CommonModule, SlicePipe, TitleCasePipe } from '@angular/common';
 import { ConditionTypePipe } from '../../pipes/condition-type-pipe';
 import { ShortenTextPipe } from '../../pipes/shorten-text-pipe';
 import { HoverStyle } from '../../directives/hover-style';
+import { AppVerify } from '../../directives/app-verify';
 @Component({
-  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe, ConditionTypePipe, ShortenTextPipe, HoverStyle],
+  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe, ConditionTypePipe, ShortenTextPipe, HoverStyle, AppVerify],
   selector: 'app-collection-list-item',
   styleUrl: './collection-list-item.scss',
   templateUrl: './collection-list-item.html',
@@ -24,8 +25,8 @@ export class CollectionListItem {
     this.expanded = !this.expanded;
   }
   //I did an method to create the remove from list
-  protected remove(event: PointerEvent): void {
-    event.stopPropagation();
+  protected remove(event?: PointerEvent): void {
+    event?.stopPropagation();
     this.itemClicked.emit({
       id: this.item().id,
       action: 'remove',

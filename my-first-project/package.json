@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "create": "ng g pipe pipes/conditionType",
-    "generate": "ng g directive directives/hoverStyle",
+    "generate": "ng g directive directives/appVerify",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

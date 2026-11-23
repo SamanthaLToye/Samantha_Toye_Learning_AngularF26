@@ -30,6 +30,7 @@
     <p><strong>Condition:</strong> Not Specified</p>
   }
     <!--added the button click to remove items (personal note to add a item button option)-->
-    <button type="button" class="delete-btn" (click)="remove($event)">Delete Item!</button>
+    <button type="button" class="delete-btn" appVerify="Delete this item?
+   (Click OK for Yes, or Cancel for No.)" (confirmed)="remove()">Delete Item!</button>
   }
 </div>
