@@ -21,5 +21,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./Components/collection-detail/collection-detail').then((m) => m.CollectionDetail),
   },
+  { path: 'saved',
+  loadComponent: () =>
+  import('./Components/save-collection-list/save-collection-list').then((m) => m.SaveCollectionList),
+},
   { path: '**', redirectTo: 'items' },
 ];

@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "create": "ng g pipe pipes/conditionType",
-    "generate": "ng g directive directives/appVerify",
+    "create": "ng g c components/saveCollectionList",
+    "generate": "ng g s services/savedServ",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

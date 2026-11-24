@@ -4,13 +4,24 @@
   <p style="font-size: 0.8rem; margin-bottom: 100px; background-color: lightgray; padding: 6px 12px; display: inline-block; border-radius: 8px">
     Note: Changes are saved on the browser only and will not change server settings.
   </p>
+  <!-- Filter List from search query -->
+  <div class="search-bar">
+    <label for="collectionSearch">Search:</label>
+    <input id="collectionSearch"
+           type="text"
+           placeholder="Filter search by name or category"
+           [value]="savedServ.searchQuery()"
+           (input)="onSearchChange($event)"
+           />
+  </div>
+
 @if (CollectionServ.isLoading()) {
   <p class="loading-message">Loading Collection Data...</p>
 } @else if (CollectionServ.error()) {
   <p class="error-message" style="color: red;">{{ CollectionServ.error() }}</p>
 } @else {
   <!--Use a @for and include the track expression, and an @empty block -->
-  @for (c of collectible(); track c.id){
+  @for (c of filteredItems(); track c.id){
     <!--Added the appHoverStyle here -->
     <app-collection-list-item [appHoverStyle]="'#5d87c1'" [item]="c" (itemClicked)="handleItemClick($event)">
     </app-collection-list-item>

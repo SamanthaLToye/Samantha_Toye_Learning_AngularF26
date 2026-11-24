@@ -61,3 +61,10 @@ or bound when creating the component class.
 
 When navigating back to the main landing page with the back button in the browser caused ngOnDestroy to run, 
 which causes the router to completely destroy the instance when you leave, rather than just hide the page. 
+
+
+### localStorage
+
+* For the store key I used searchQuery to sort and filter items by name or category and show the list if the item matches what the user entered. This
+works with my Collection to filter items if someone is looking for an item they know they want to buy.
+* The one thing we never store in localStorage would be passwords for security concerns.

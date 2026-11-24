@@ -1,0 +1,15 @@
+<div class="saved-container">
+  <h1>Saved Collection Items</h1>
+
+  @for (item of savedItems(); track item.id) {
+    <div class="saved-card">
+      <a [routerLink]="['/items', item.id]">{{ item.name }}</a>
+      <p><strong>Category:</strong>{{ item.category }}</p>
+      <button type="button" (click)="onUnsave(item.id)">Unsave</button>
+    </div>
+  } @empty {
+    <!-- Show a friendly message when nothing is saved -->
+    <p>No saved items currently available. Please return to the collection list.</p>
+    <a routerLink="/items">Back to Collection</a>
+  }
+</div>
