@@ -5,10 +5,16 @@ import { RouterLink } from '@angular/router';
 import { CommonModule, SlicePipe, TitleCasePipe } from '@angular/common';
 import { ConditionTypePipe } from '../../pipes/condition-type-pipe';
 import { ShortenTextPipe } from '../../pipes/shorten-text-pipe';
-import { HoverStyle } from '../../directives/hover-style';
 import { AppVerify } from '../../directives/app-verify';
+import { HoverStyle } from '../../directives/hover-style';
 @Component({
-  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe, ConditionTypePipe, ShortenTextPipe, HoverStyle, AppVerify],
+  imports: [RouterLink, CommonModule, TitleCasePipe, SlicePipe, ConditionTypePipe, ShortenTextPipe, AppVerify],
+  hostDirectives: [
+    {
+    directive: HoverStyle,
+    inputs: ['appHoverStyle: hoverColor'],
+    },
+  ],
   selector: 'app-collection-list-item',
   styleUrl: './collection-list-item.scss',
   templateUrl: './collection-list-item.html',

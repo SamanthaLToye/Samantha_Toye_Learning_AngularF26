@@ -4,11 +4,10 @@ import { collectionEv } from '../../shared/collectionEv';
 import { CollectionServ } from '../../services/collection-serv';
 import { RouterLink } from '@angular/router';
 import { CommonModule, DecimalPipe, } from '@angular/common';
-import { HoverStyle } from '../../directives/hover-style';
 import { SavedServ } from '../../services/saved-serv';
 
 @Component({
-  imports: [RouterLink, CollectionListItem, CommonModule, DecimalPipe, HoverStyle],
+  imports: [RouterLink, CollectionListItem, CommonModule, DecimalPipe],
   selector: 'app-collection-list',
   styleUrl: './collection-list.scss',
   templateUrl: './collection-list.html',
